@@ -1,0 +1,12 @@
+{
+  "name": "customers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Frank Santos",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "web",
+    "api"
+  ]
+}
