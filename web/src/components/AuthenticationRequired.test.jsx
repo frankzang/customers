@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { AuthenticationRequired } from "./AuthenticationRequired";
 import { useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Routes } from "../configs/routes";
 
 jest.mock("react-router-dom", () => ({
   useHistory: jest.fn(),
@@ -18,7 +19,7 @@ jest.mock("@auth0/auth0-react", () => {
 const mockUseAuth0 = useAuth0;
 
 describe("AuthenticationRequired component", () => {
-  test("should redirect to login if there's no user", async () => {
+  test("should redirect to login if there is no logged user", async () => {
     mockUseAuth0.mockReturnValue({
       isAuthenticated: false,
       isLoading: false,
@@ -29,10 +30,10 @@ describe("AuthenticationRequired component", () => {
     }));
     render(<AuthenticationRequired />);
 
-    expect(replace).toHaveBeenCalled();
+    expect(replace).toHaveBeenCalledWith(Routes.LOGIN);
   });
 
-  test("should grant acces to children if there's user", async () => {
+  test("should enable acces to children if there is a logged user", async () => {
     mockUseAuth0.mockReturnValue({
       isAuthenticated: true,
       isLoading: false,
