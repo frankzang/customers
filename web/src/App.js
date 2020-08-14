@@ -9,7 +9,7 @@ const dynamicImport = (route) => React.lazy(() => import(`./screens/${route}`));
 
 function App() {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<LoadingScreen />}>
       <Switch>
         <Route path={Routes.LOGIN} component={dynamicImport("Login")} />
         <AuthenticationRequired>
