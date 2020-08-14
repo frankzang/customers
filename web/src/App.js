@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import "./App.css";
+import { Switch, Route } from "react-router-dom";
+import { AuthenticationRequired } from "./components/AuthenticationRequired";
+import { Routes } from "./configs/routes";
+import LoadingScreen from "./screens/LoadingScreen";
+
+const dynamicImport = (route) => React.lazy(() => import(`./screens/${route}`));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={null}>
+      <Switch>
+        <Route path={Routes.LOGIN} component={dynamicImport("Login")} />
+        <AuthenticationRequired>
+          <Route path={Routes.HOME} component={dynamicImport("Home")} />
+        </AuthenticationRequired>
+      </Switch>
+    </Suspense>
   );
 }
 
