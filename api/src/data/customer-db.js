@@ -2,10 +2,6 @@ const customers = require("./customers.json");
 const _ = require("lodash");
 
 class CustomersDb {
-  async getAll() {
-    return customers;
-  }
-
   async findAllBy(field, value) {
     const filtered = customers.filter((customer) => customer[field] === value);
 
