@@ -22,7 +22,7 @@ export default function City() {
   return (
     <section className={"site-section"}>
       <h1>{city} customers</h1>
-      <small>Page: {page + 1}</small>
+
       {isLoading && <ClipLoader size={30} />}
       {error && (
         <p>
@@ -45,15 +45,18 @@ export default function City() {
           })}
       </div>
       <footer>
-        <Button disabled={isLoading || page <= 0} onClick={fetchPreviousPage}>
-          Previous page
-        </Button>
-        <Button
-          disabled={isLoading || !resolvedData?.hasMore}
-          onClick={fetchNextPage}
-        >
-          Next page
-        </Button>
+        <div className={styles["page-navigation"]}>
+          <Button disabled={isLoading || page <= 0} onClick={fetchPreviousPage}>
+            Previous page
+          </Button>
+          <span>Page: {page + 1}</span>
+          <Button
+            disabled={isLoading || !resolvedData?.hasMore}
+            onClick={fetchNextPage}
+          >
+            Next page
+          </Button>
+        </div>
       </footer>
     </section>
   );

@@ -3,3 +3,10 @@
   flex-wrap: wrap;
   margin-top: 2rem;
 }
+
+.page-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 400px;
+}
