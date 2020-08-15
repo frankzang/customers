@@ -1,7 +1,9 @@
 const api = "http://localhost:5000/";
 
 function requestApi(endpoint, { method = "GET" } = {}) {
-  return fetch(`${api}${endpoint}`, {
+  const path = `${api}${endpoint}`;
+  console.log(path);
+  return fetch(path, {
     method,
   });
 }
