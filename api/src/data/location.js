@@ -4,7 +4,6 @@ const apiKey = "AIzaSyCp9QzLbkbT6MUwU807kr_R2gf_Y3-Rssk";
 
 class GeoLocation {
   constructor() {
-    console.log("created");
     this.getCityCoordinates = this.getCityCoordinates.bind(this);
   }
 

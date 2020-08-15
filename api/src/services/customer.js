@@ -1,7 +1,7 @@
 const customers = require("../data/customers.json");
 const _ = require("lodash");
 const CustomersDb = require("../data/customer-db");
-const GeoLocation = require("../data/google-maps");
+const GeoLocation = require("../data/location");
 
 class CustomerService {
   constructor() {
