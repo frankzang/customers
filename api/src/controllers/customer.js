@@ -37,15 +37,16 @@ class CustomerController {
   async getByCity(req, res) {
     try {
       const city = req.params.city;
-      const pageIndex = req.params.page;
+      const pageIndex = req.query.page;
       const page = await this.customerService.getByCity(city, pageIndex);
 
       if (!page.length) {
         return res.status(404).send("Not found");
       }
 
-      res.status(200).json(response);
+      res.status(200).json(page);
     } catch (error) {
+      console.log({ error });
       res.status(500).json({ message: "Something went wrong" });
     }
   }
