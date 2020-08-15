@@ -1,10 +1,12 @@
 const customers = require("../data/customers.json");
 const _ = require("lodash");
 const CustomersDb = require("../data/customer-db");
+const GeoLocation = require("../data/google-maps");
 
 class CustomerService {
   constructor() {
     this.customerDb = new CustomersDb();
+    this.geoLocation = new GeoLocation();
   }
 
   async findAll() {
@@ -41,8 +43,16 @@ class CustomerService {
 
   async getById(id) {
     const customer = await this.customerDb.findOne("id", id);
+    const customerAdderess = await this.geoLocation.getCityCoordinates(
+      customer.city
+    );
+    const updatedCustomer = {
+      ...customer,
+      lat: customerAdderess.geometry.location.lat,
+      long: customerAdderess.geometry.location.lng,
+    };
 
-    return customer;
+    return updatedCustomer;
   }
 
   async getByCity(city, pageIndex = 0) {
