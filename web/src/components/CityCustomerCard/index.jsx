@@ -6,7 +6,7 @@ import styles from "./index.module.scss";
 export function CityCustomerCard({ id, firstName, lastName, email, company }) {
   return (
     <Link
-      to={`${Routes.CITY}/${id}`}
+      to={`${Routes.CUSTOMER}/${id}`}
       aria-label={`Customer: ${firstName} ${lastName}`}
       className={styles.card}
     >

@@ -18,6 +18,10 @@ function App() {
             path={`${Routes.CITY}/:city`}
             component={dynamicImport("City")}
           />
+          <Route
+            path={`${Routes.CUSTOMER}/:id`}
+            component={dynamicImport("Customer")}
+          />
         </AuthenticationRequired>
       </Switch>
     </Suspense>
