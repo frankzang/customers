@@ -1,9 +1,7 @@
-import { useState, useCallback } from "react";
 import { useQuery } from "react-query";
 import { requestApi } from "../../configs/api";
 
 export function useFetchCustomer(id) {
-  const [page, setPage] = useState(0);
   const query = useQuery(["customer", id], fetchCustomer, {
     refetchOnWindowFocus: false,
     retry: false,
