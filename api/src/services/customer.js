@@ -53,7 +53,8 @@ class CustomerService {
     const hasMore = !!pages[pageIndex + 1];
 
     const citiyCustomers = page.map(
-      ({ first_name, last_name, email, company }) => ({
+      ({ id, first_name, last_name, email, company }) => ({
+        id,
         first_name,
         last_name,
         email,
