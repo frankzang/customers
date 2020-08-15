@@ -13,7 +13,11 @@ function App() {
       <Switch>
         <Route path={Routes.LOGIN} component={dynamicImport("Login")} />
         <AuthenticationRequired>
-          <Route path={Routes.HOME} component={dynamicImport("Home")} />
+          <Route exact path={Routes.HOME} component={dynamicImport("Home")} />
+          <Route
+            path={`${Routes.CITY}/:city`}
+            component={dynamicImport("City")}
+          />
         </AuthenticationRequired>
       </Switch>
     </Suspense>
