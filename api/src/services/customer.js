@@ -50,13 +50,22 @@ class CustomerService {
     const MAX_RESULTS_PER_PAGE = 10;
     const pages = _.chunk(customers, MAX_RESULTS_PER_PAGE);
     const page = pages[pageIndex] || [];
+    const hasMore = !!pages[pageIndex + 1];
 
-    const response = page.map(({ first_name, last_name, email, company }) => ({
-      first_name,
-      last_name,
-      email,
-      company,
-    }));
+    const citiyCustomers = page.map(
+      ({ first_name, last_name, email, company }) => ({
+        first_name,
+        last_name,
+        email,
+        company,
+      })
+    );
+
+    const response = {
+      customers: citiyCustomers,
+      page: pageIndex,
+      hasMore,
+    };
 
     return response;
   }
