@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { AuthenticationRequired } from "./AuthenticationRequired";
+import { AuthenticationRequired } from ".";
 import { useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Routes } from "../configs/routes";
+import { Routes } from "../../configs/routes";
 
 jest.mock("react-router-dom", () => ({
   useHistory: jest.fn(),
