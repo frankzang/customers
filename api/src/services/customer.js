@@ -48,8 +48,8 @@ class CustomerService {
     );
     const response = {
       ...customer,
-      lat: customerAdderess ? customerAdderess.geometry.location.lat : null,
-      long: customerAdderess ? customerAdderess.geometry.location.lng : null,
+      lat: customerAdderess ? customerAdderess.location.lat : null,
+      long: customerAdderess ? customerAdderess.location.lng : null,
     };
 
     return response;

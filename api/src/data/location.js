@@ -9,10 +9,12 @@ class GeoLocation {
 
   async getCityCoordinates(city) {
     try {
-      const query = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${city}&inputtype=textquery&fields=geometry&key=${apiKey}`;
+      const query = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+        city
+      )}&key=${apiKey}`;
       const res = await fetch(query);
       const json = await res.json();
-      const coordinates = json.candidates[0];
+      const coordinates = json.results[0].geometry;
 
       return coordinates;
     } catch (error) {
