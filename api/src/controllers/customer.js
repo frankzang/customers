@@ -4,16 +4,9 @@ const _ = require("lodash");
 class CustomerController {
   constructor() {
     this.customerService = new CustomerService();
-  }
-
-  async getAll(_req, res) {
-    try {
-      const customers = await this.customerService.findAll();
-
-      res.status(200).json(customers);
-    } catch (error) {
-      res.status(500).json({ message: "Something went wrong" });
-    }
+    this.getTotalByCities = this.getTotalByCities.bind(this);
+    this.getById = this.getById.bind(this);
+    this.getByCity = this.getByCity.bind(this);
   }
 
   async getTotalByCities(_req, res) {
@@ -45,7 +38,7 @@ class CustomerController {
     try {
       const city = req.params.city;
       const pageIndex = req.params.page;
-      const page = this.customerService.getByCity(city, pageIndex);
+      const page = await this.customerService.getByCity(city, pageIndex);
 
       if (!page.length) {
         return res.status(404).send("Not found");
