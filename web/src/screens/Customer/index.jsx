@@ -50,13 +50,15 @@ export default function Customer() {
               </tbody>
             </table>
           </div>
-          <iframe
-            title="user location"
-            width="600"
-            height="450"
-            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCp9QzLbkbT6MUwU807kr_R2gf_Y3-Rssk
+          {data.lat && data.long && (
+            <iframe
+              title="user location"
+              width="600"
+              height="450"
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCp9QzLbkbT6MUwU807kr_R2gf_Y3-Rssk
         &q=${data.lat},${data.long}`}
-          ></iframe>
+            ></iframe>
+          )}
         </>
       )}
     </section>
