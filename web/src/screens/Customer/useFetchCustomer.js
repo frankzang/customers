@@ -17,5 +17,5 @@ export function useFetchCustomer(id) {
     }
   }
 
-  return { ...query };
+  return query;
 }
