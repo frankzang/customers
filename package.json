@@ -12,6 +12,8 @@
   "scripts": {
     "web": "yarn workspace web start",
     "api": "yarn workspace api start",
+    "test:web": "yarn workspace web test",
+    "test:api": "yarn workspace api test",
     "start": "concurrently --kill-others-on-fail \"yarn api\" \"yarn web\" "
   },
   "dependencies": {
