@@ -17,7 +17,7 @@ export default function Home() {
       {status === "loading" && <ClipLoader size={30} />}
       {error && (
         <p>
-          {error.message} <Button onClick={refetch}>try again</Button>
+          {error.message} <Button onClick={refetch}>Try again</Button>
         </p>
       )}
       <div className={styles["cards-container"]}>
