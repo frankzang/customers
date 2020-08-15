@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Login() {
+export default function Loading() {
   return (
     <section>
       <p>Loading...</p>
