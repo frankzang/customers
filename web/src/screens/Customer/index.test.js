@@ -1,21 +1,19 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitForDomChange } from "@testing-library/react";
 import Customer from "./";
-import { useFetchCustomer } from "./useFetchCustomer";
 import { buildCustomer } from "../../tests/generate";
 import { MemoryRouter } from "react-router-dom";
-
-jest.mock("./useFetchCustomer");
-const mockUseFetchCustomer = useFetchCustomer;
 
 describe("Customer component", () => {
   test("should render customer information", async () => {
     const mockCustomer = buildCustomer();
-    mockUseFetchCustomer.mockReturnValue({
-      status: "success",
-      data: mockCustomer,
+    jest.spyOn(global, "fetch").mockReturnValue({
+      json: () => Promise.resolve(mockCustomer),
+      status: 200,
     });
     render(<Customer />, { wrapper: MemoryRouter });
+
+    await waitForDomChange();
 
     expect(
       screen.getByText(`${mockCustomer.first_name} ${mockCustomer.last_name}`)
@@ -28,12 +26,14 @@ describe("Customer component", () => {
   });
 
   test("should render an error message if a customer is not found", async () => {
-    const message = "It was not possible to fetch customer data";
-    mockUseFetchCustomer.mockReturnValue({
-      status: "error",
-      error: { message },
+    jest.spyOn(global, "fetch").mockReturnValue({
+      json: () => Promise.resolve(null),
+      status: 404,
     });
+    const message = "It was not possible to fetch customer data";
     render(<Customer />, { wrapper: MemoryRouter });
+
+    await waitForDomChange();
 
     expect(screen.getByText(message)).toBeInTheDocument();
   });
