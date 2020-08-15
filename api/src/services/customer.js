@@ -42,17 +42,17 @@ class CustomerService {
   }
 
   async getById(id) {
-    const customer = await this.customerDb.findOne("id", id);
+    let customer = await this.customerDb.findOne("id", id);
     const customerAdderess = await this.geoLocation.getCityCoordinates(
       customer.city
     );
-    const updatedCustomer = {
+    const response = {
       ...customer,
-      lat: customerAdderess.geometry.location.lat,
-      long: customerAdderess.geometry.location.lng,
+      lat: customerAdderess ? customerAdderess.geometry.location.lat : null,
+      long: customerAdderess ? customerAdderess.geometry.location.lng : null,
     };
 
-    return updatedCustomer;
+    return response;
   }
 
   async getByCity(city, pageIndex = 0) {
