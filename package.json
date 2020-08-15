@@ -8,5 +8,13 @@
   "workspaces": [
     "web",
     "api"
-  ]
+  ],
+  "scripts": {
+    "web": "yarn workspace web start",
+    "api": "yarn workspace api start",
+    "start": "concurrently --kill-others-on-fail \"yarn api\" \"yarn web\" "
+  },
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
 }
