@@ -10,6 +10,8 @@ export default function Customer() {
   const { data, status, error, refetch } = useFetchCustomer(id);
   const isLoading = status === "loading";
 
+  console.log({ data });
+
   return (
     <section className={"site-section"}>
       <h1>Customer information</h1>
@@ -20,35 +22,46 @@ export default function Customer() {
         </p>
       )}
       {data && (
-        <div className={styles["customer-details"]}>
-          <h2>
-            {data.first_name} {data.last_name}
-          </h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>Email</th>
-                <td>{data.email}</td>
-              </tr>
-              <tr>
-                <th>Title</th>
-                <td>{data.title}</td>
-              </tr>
-              <tr>
-                <th>Gender</th>
-                <td>{data.gender}</td>
-              </tr>
-              <tr>
-                <th>Company</th>
-                <td>{data.company}</td>
-              </tr>
-              <tr>
-                <th>City</th>
-                <td>{data.city}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <>
+          <div className={styles["customer-details"]}>
+            <h2>
+              {data.first_name} {data.last_name}
+            </h2>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Email</th>
+                  <td>{data.email}</td>
+                </tr>
+                <tr>
+                  <th>Title</th>
+                  <td>{data.title}</td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td>{data.gender}</td>
+                </tr>
+                <tr>
+                  <th>Company</th>
+                  <td>{data.company}</td>
+                </tr>
+                <tr>
+                  <th>City</th>
+                  <td>{data.city}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <iframe
+            title="user location"
+            width="600"
+            height="450"
+            frameborder="0"
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCp9QzLbkbT6MUwU807kr_R2gf_Y3-Rssk
+        &q=${data.lat},${data.long}`}
+            allowfullscreen
+          ></iframe>
+        </>
       )}
     </section>
   );
