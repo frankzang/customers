@@ -27,7 +27,7 @@ describe("Customer component", () => {
     expect(screen.getByText(mockCustomer.city)).toBeInTheDocument();
   });
 
-  test("should render an erro message if customer is not found", async () => {
+  test("should render an error message if a customer is not found", async () => {
     const message = "It was not possible to fetch customer data";
     mockUseFetchCustomer.mockReturnValue({
       status: "error",
