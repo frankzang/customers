@@ -10,8 +10,6 @@ export default function Customer() {
   const { data, status, error, refetch } = useFetchCustomer(id);
   const isLoading = status === "loading";
 
-  console.log({ data });
-
   return (
     <section className={"site-section"}>
       <h1>Customer information</h1>
