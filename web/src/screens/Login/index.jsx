@@ -14,7 +14,7 @@ export default function Login() {
 
   return (
     <section>
-      <Button onClick={loginWithPopup} />
+      <Button onClick={loginWithPopup}>Sign in</Button>
     </section>
   );
 }
