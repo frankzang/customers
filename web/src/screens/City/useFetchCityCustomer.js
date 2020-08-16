@@ -14,12 +14,14 @@ export function useFetchCityCustomer(city) {
   );
 
   async function fetchCityCustomers(_, city, page) {
-    const citiesReq = await requestApi(`customers/cities/${city}?page=${page}`);
-    if (citiesReq.status >= 400)
+    const cityCustomersReq = await requestApi(
+      `customers/cities/${city}?page=${page}`
+    );
+    if (cityCustomersReq.status >= 400)
       throw new Error("It was not possible to fetch clients for this city");
 
-    if (citiesReq.status >= 200) {
-      return citiesReq.json();
+    if (cityCustomersReq.status >= 200) {
+      return cityCustomersReq.json();
     }
   }
 

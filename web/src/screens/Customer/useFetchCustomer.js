@@ -8,12 +8,12 @@ export function useFetchCustomer(id) {
   });
 
   async function fetchCustomer(_, id) {
-    const citiesReq = await requestApi(`customers/${id}`);
-    if (citiesReq.status >= 400)
+    const customerReq = await requestApi(`customers/${id}`);
+    if (customerReq.status >= 400)
       throw new Error("It was not possible to fetch customer data");
 
-    if (citiesReq.status >= 200) {
-      return citiesReq.json();
+    if (customerReq.status >= 200) {
+      return customerReq.json();
     }
   }
 
