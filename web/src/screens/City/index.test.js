@@ -7,14 +7,14 @@ import {
   act,
 } from "@testing-library/react";
 import City from "./";
-import { buildCustomer } from "../../tests/generate";
+import { buildCustomerByCity } from "../../tests/generate";
 import { MemoryRouter } from "react-router-dom";
 
 describe("City component", () => {
   function createCustomersResults(length) {
     return Array(length)
       .fill(null)
-      .map(() => buildCustomer());
+      .map(() => buildCustomerByCity());
   }
 
   test("should fetch a new set of results", async () => {
