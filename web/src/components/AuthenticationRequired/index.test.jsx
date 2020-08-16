@@ -19,7 +19,7 @@ jest.mock("@auth0/auth0-react", () => {
 const mockUseAuth0 = useAuth0;
 
 describe("AuthenticationRequired component", () => {
-  test("should redirect to login if there is no logged user", async () => {
+  test("should redirect to login if there is no user", async () => {
     mockUseAuth0.mockReturnValue({
       isAuthenticated: false,
       isLoading: false,
@@ -33,7 +33,7 @@ describe("AuthenticationRequired component", () => {
     expect(replace).toHaveBeenCalledWith(Routes.LOGIN);
   });
 
-  test("should enable acces to children if there is a logged user", async () => {
+  test("should render children if there is a logged user", async () => {
     mockUseAuth0.mockReturnValue({
       isAuthenticated: true,
       isLoading: false,
