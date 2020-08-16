@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { requestApi } from "../../configs/api";
 
 function useFetchTotalCustomersByCities() {
-  const query = useQuery("cities-customers", fetchCitiesCustomers, {
+  const query = useQuery("cities-total-customers", fetchCitiesCustomers, {
     refetchOnWindowFocus: false,
     retry: false,
   });

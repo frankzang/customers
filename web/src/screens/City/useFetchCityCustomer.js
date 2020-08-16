@@ -5,7 +5,7 @@ import { requestApi } from "../../configs/api";
 export function useFetchCityCustomer(city) {
   const [page, setPage] = useState(0);
   const query = usePaginatedQuery(
-    ["cities-customers", city, page],
+    ["city-customers", city, page],
     fetchCityCustomers,
     {
       refetchOnWindowFocus: false,
