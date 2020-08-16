@@ -11,14 +11,16 @@ import { buildCustomer } from "../../tests/generate";
 import { MemoryRouter } from "react-router-dom";
 
 describe("City component", () => {
+  function createCustomersResults(length) {
+    return Array(length)
+      .fill(null)
+      .map(() => buildCustomer());
+  }
+
   test("should fetch a new set of results", async () => {
-    const page1 = Array(10)
-      .fill(null)
-      .map(() => buildCustomer());
-    const page2 = Array(5)
-      .fill(null)
-      .map(() => buildCustomer());
-    jest.spyOn(global, "fetch").mockReturnValue({
+    const page1 = createCustomersResults(10);
+    const page2 = createCustomersResults(5);
+    const fetchSpy = jest.spyOn(global, "fetch").mockReturnValue({
       json: () => Promise.resolve({ customers: page1, hasMore: true }),
       status: 200,
     });
@@ -33,7 +35,7 @@ describe("City component", () => {
       })
     ).toBeDisabled();
 
-    jest.spyOn(global, "fetch").mockReturnValue({
+    fetchSpy.mockReturnValue({
       json: () => Promise.resolve({ customers: page2, hasMore: false }),
       status: 200,
     });
