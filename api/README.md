@@ -4,7 +4,7 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-It wiil start the api locally on [http://localhost:5000](http://localhost:5000);
+It will start the api locally on [http://localhost:5000](http://localhost:5000);
 
 ## Endpoints
 
