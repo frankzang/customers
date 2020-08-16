@@ -9,28 +9,6 @@ class CustomerService {
     this.geoLocation = new GeoLocation();
   }
 
-  async findAll() {
-    return customers;
-  }
-
-  async findAllBy(field, value) {
-    const filtered = customers.filter((customer) => customer[field] === value);
-
-    return filtered;
-  }
-
-  async groupBy(field) {
-    const group = _.groupBy(customers, field);
-
-    return group;
-  }
-
-  async find(field, value) {
-    const customer = customers.find((customer) => customer[field] === value);
-
-    return customer;
-  }
-
   async getTotalByCities() {
     const group = await this.customerDb.groupBy("city");
     const cities = Object.entries(group).map(([city, customers]) => ({
