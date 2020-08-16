@@ -46,7 +46,7 @@ For a User with ID 854
 }
 ```
 
-## Get total Customers in cities
+## Get Total Customers in Cities
 
 Get the total number of customers in cities.
 
