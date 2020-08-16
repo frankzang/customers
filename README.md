@@ -12,7 +12,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Starts both the front and the api.<br />
 Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
-## `Tests`
+## Tests
 
 Test for the front-end will be run automatically on every pull request, but can be run manually with the comand:
 
