@@ -48,7 +48,7 @@ describe("City component", () => {
       );
     });
 
-    expect(screen.getAllByRole("link").length).toBe(page1.length);
+    expect(screen.getAllByRole("link").length).toBe(page2.length);
     expect(
       screen.getByRole("button", {
         name: /next page/i,
