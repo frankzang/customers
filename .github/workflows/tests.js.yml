@@ -1,15 +1,18 @@
-name: Firebase Deploy
+name: Test
 on:
   push:
     branches:
       - master
     paths:
-      - 'web/**'
+      - "customers/web/**"
 jobs:
-  Deploy:
-    name: Deploy
+  Test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
+        - name: Checkout Repo
+        uses: actions/checkout@master
+
       - name: Install Dependencies
         run: yarn install
 
