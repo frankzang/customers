@@ -1,6 +1,14 @@
-# Api Documentation
+## Available Scripts
 
-## Customers endpoint
+In the project directory, you can run:
+
+### `yarn start`
+
+It wiil start the api locally on [http://localhost:5000](http://localhost:5000);
+
+## Endpoints
+
+## Customers
 
 **URL** : `/api/customers`
 
