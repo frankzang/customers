@@ -11,7 +11,7 @@ jest.mock("react-router-dom", () => ({
 const mockUseHistory = useHistory;
 
 jest.mock("@auth0/auth0-react", () => {
-  const auth0 = jest.requireActual();
+  const auth0 = jest.requireActual("@auth0/auth0-react");
   auth0.useAuth0 = jest.fn();
 
   return auth0;
