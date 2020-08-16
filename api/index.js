@@ -7,4 +7,4 @@ app.use(cors());
 
 app.use("/customers", routes.customerRouter);
 
-app.listen(5000, () => console.log("Listening"));
+app.listen(5000, () => console.log("app is running at http://localhost:3000/"));
