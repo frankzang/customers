@@ -1,0 +1,17 @@
+name: Firebase Deploy
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'web/**'
+jobs:
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Run Tests
+        run: yarn test:web
