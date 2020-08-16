@@ -4,7 +4,7 @@ In the project directory, you can run:
 
 ### `yarn install`
 
-Installs the dependencies to the front-end and the api.<br />
+Installs the dependencies for the front-end and the api.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `yarn start`
